@@ -1,13 +1,6 @@
 package com.leafgraph.tshimizu.sysdev.memstashd;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StreamTokenizer;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.HashMap;
-import java.util.IllegalFormatException;
+import com.leafgraph.tshimizu.sysdev.memstashd.presentation.MemstashdServer;
 
 public class Main {
 
