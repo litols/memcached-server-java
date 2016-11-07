@@ -4,7 +4,7 @@ import com.leafgraph.tshimizu.sysdev.memstashd.infra.dao.Dao;
 import com.leafgraph.tshimizu.sysdev.memstashd.infra.dao.HashMapDao;
 
 /**
- * Created by  on 2016/11/02.
+ * Created by takahiro on 2016/11/02.
  */
 
 
