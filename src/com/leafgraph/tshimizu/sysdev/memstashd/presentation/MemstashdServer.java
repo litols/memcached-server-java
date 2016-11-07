@@ -1,6 +1,7 @@
 package com.leafgraph.tshimizu.sysdev.memstashd.presentation;
 
-import com.leafgraph.tshimizu.sysdev.memstashd.Util;
+import com.leafgraph.tshimizu.sysdev.memstashd.util.CRLFBufferedReader;
+import com.leafgraph.tshimizu.sysdev.memstashd.util.Settings;
 import com.leafgraph.tshimizu.sysdev.memstashd.domain.ServerUseCase;
 import com.leafgraph.tshimizu.sysdev.memstashd.util.ConnectionCloseByUserException;
 
@@ -24,7 +25,7 @@ public class MemstashdServer {
 
     public void start(){
         try{
-            ServerSocket server= new ServerSocket(Util.SERVER_PORT_NUMBER);
+            ServerSocket server= new ServerSocket(Settings.SERVER_PORT_NUMBER);
             while(true){
                 this.serverProcess(server);
             }
@@ -38,7 +39,7 @@ public class MemstashdServer {
 
         this.service.execute(() -> {
             try {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
+                CRLFBufferedReader reader = new CRLFBufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
 
                 while (!socket.isClosed()) {

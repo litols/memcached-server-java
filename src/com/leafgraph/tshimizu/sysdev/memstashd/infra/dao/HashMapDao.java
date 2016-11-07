@@ -57,4 +57,11 @@ public class HashMapDao extends Dao{
             return  hashMap.containsKey(key);
         }
     }
+
+    @Override
+    public int countItems() {
+        synchronized (HashMapDao.class) {
+            return hashMap.size();
+        }
+    }
 }

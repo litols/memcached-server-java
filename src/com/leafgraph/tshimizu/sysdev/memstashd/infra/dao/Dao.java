@@ -10,4 +10,6 @@ public abstract class Dao {
     public abstract boolean delete(String key);
     public abstract boolean containsKey(String key);
 
+    public abstract int countItems();
+
 }

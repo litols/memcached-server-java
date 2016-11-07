@@ -40,4 +40,8 @@ public class DataRepository {
     public boolean update(String key, String value) {
         return dao.update(key, value);
     }
+
+    public int countItems(){
+        return dao.countItems();
+    }
 }
