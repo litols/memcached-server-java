@@ -1,4 +1,4 @@
-package com.leafgraph.tshimizu.sysdev.memstashd.infra;
+package com.leafgraph.tshimizu.sysdev.memcached.infra;
 
 /**
  * Created by takahiro on 2016/11/08.

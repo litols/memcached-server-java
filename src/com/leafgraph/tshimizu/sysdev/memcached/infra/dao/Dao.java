@@ -1,4 +1,4 @@
-package com.leafgraph.tshimizu.sysdev.memstashd.infra.dao;
+package com.leafgraph.tshimizu.sysdev.memcached.infra.dao;
 
 /**
  * Created by takahiro on 2016/11/07.

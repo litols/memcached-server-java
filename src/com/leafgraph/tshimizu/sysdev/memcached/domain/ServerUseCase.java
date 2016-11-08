@@ -1,11 +1,10 @@
-package com.leafgraph.tshimizu.sysdev.memstashd.domain;
+package com.leafgraph.tshimizu.sysdev.memcached.domain;
 
-import com.leafgraph.tshimizu.sysdev.memstashd.infra.DataRepository;
-import com.leafgraph.tshimizu.sysdev.memstashd.infra.ProccessCounter;
-import com.leafgraph.tshimizu.sysdev.memstashd.util.CRLFBufferedReader;
-import com.leafgraph.tshimizu.sysdev.memstashd.util.ConnectionCloseByUserException;
+import com.leafgraph.tshimizu.sysdev.memcached.infra.DataRepository;
+import com.leafgraph.tshimizu.sysdev.memcached.infra.ProccessCounter;
+import com.leafgraph.tshimizu.sysdev.memcached.util.CRLFBufferedReader;
+import com.leafgraph.tshimizu.sysdev.memcached.util.ConnectionCloseByUserException;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 

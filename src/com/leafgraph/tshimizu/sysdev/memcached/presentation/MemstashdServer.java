@@ -1,9 +1,9 @@
-package com.leafgraph.tshimizu.sysdev.memstashd.presentation;
+package com.leafgraph.tshimizu.sysdev.memcached.presentation;
 
-import com.leafgraph.tshimizu.sysdev.memstashd.util.CRLFBufferedReader;
-import com.leafgraph.tshimizu.sysdev.memstashd.util.Settings;
-import com.leafgraph.tshimizu.sysdev.memstashd.domain.ServerUseCase;
-import com.leafgraph.tshimizu.sysdev.memstashd.util.ConnectionCloseByUserException;
+import com.leafgraph.tshimizu.sysdev.memcached.util.CRLFBufferedReader;
+import com.leafgraph.tshimizu.sysdev.memcached.util.Settings;
+import com.leafgraph.tshimizu.sysdev.memcached.domain.ServerUseCase;
+import com.leafgraph.tshimizu.sysdev.memcached.util.ConnectionCloseByUserException;
 
 import java.io.*;
 import java.net.ServerSocket;

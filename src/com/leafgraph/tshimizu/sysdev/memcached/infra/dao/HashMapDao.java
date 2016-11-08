@@ -1,4 +1,4 @@
-package com.leafgraph.tshimizu.sysdev.memstashd.infra.dao;
+package com.leafgraph.tshimizu.sysdev.memcached.infra.dao;
 
 import java.util.HashMap;
 

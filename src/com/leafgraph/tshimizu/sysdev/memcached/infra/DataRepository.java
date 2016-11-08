@@ -1,7 +1,7 @@
-package com.leafgraph.tshimizu.sysdev.memstashd.infra;
+package com.leafgraph.tshimizu.sysdev.memcached.infra;
 
-import com.leafgraph.tshimizu.sysdev.memstashd.infra.dao.Dao;
-import com.leafgraph.tshimizu.sysdev.memstashd.infra.dao.HashMapDao;
+import com.leafgraph.tshimizu.sysdev.memcached.infra.dao.Dao;
+import com.leafgraph.tshimizu.sysdev.memcached.infra.dao.HashMapDao;
 
 /**
  * Created by takahiro on 2016/11/02.
