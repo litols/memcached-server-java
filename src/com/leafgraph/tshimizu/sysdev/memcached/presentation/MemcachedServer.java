@@ -15,11 +15,11 @@ import java.util.concurrent.Executors;
 /**
  * Created by takahiro on 2016/10/24.
  */
-public class MemstashdServer {
+public class MemcachedServer {
     HashMap<String,String> dataStore;
 
     private ExecutorService service = Executors.newCachedThreadPool();
-    public MemstashdServer() {
+    public MemcachedServer() {
         dataStore=new HashMap<>();
     }
 
