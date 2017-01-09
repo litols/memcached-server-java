@@ -1,5 +1,9 @@
 package com.leafgraph.tshimizu.sysdev.memcached.infra.dao;
 
+import java.io.Serializable;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Created by takahiro on 2016/11/07.
  */
@@ -12,4 +16,5 @@ public abstract class Dao {
 
     public abstract int countItems();
 
+    public abstract Set<Map.Entry<String,String>> getSet();
 }

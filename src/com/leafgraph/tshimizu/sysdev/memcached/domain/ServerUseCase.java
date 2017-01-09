@@ -24,13 +24,13 @@ public class ServerUseCase{
 
     public void parseCommand() throws IOException, ConnectionCloseByUserException{
         String commandString = reader.readLine();
-        if (commandString == null) {
+        if (commandString == null||commandString.equals("")) {
             return;
         }
 
         String[] commands = commandString.split(" ");
         // TODO: 本当はコマンドごとにUseCaseをクラスとして分けるべきですが、少し冗長なので見送り･･･
-        switch (commands[0]) {
+        switch (commands[0].toLowerCase()) {
             case "get":
                 counter.increment_cmd_get();
                 getAction(commands);
@@ -45,6 +45,9 @@ public class ServerUseCase{
             case "stats":
                 statsAction(commands);
                 break;
+            case "flush":
+                flushAction(commands);
+                break;
             case "quit":
                 throw new ConnectionCloseByUserException();
             default:
@@ -56,10 +59,12 @@ public class ServerUseCase{
     private void getAction(String[] commands) throws IOException{
         if(repository.containsKey(commands[1])){
             String gdata = repository.read(commands[1]);
+            System.out.println("GET "+commands[1]);
             writer.write(gdata + "\r\n");
             writer.write("END\r\n");
             counter.increment_get_hits();
         }else{
+            System.out.println("NOT_FOUND");
             writer.write("NOT_FOUND\r\n");
             counter.increment_get_misses();
         }
@@ -69,7 +74,7 @@ public class ServerUseCase{
     private void setAction(String[] commands) throws IOException{
         String sdata = reader.readLine();
         repository.create(commands[1], sdata);
-        System.out.println(sdata + " STORED.");
+        System.out.println("STORED :"+sdata);
         writer.write("STORED\r\n");
         writer.flush();
     }
@@ -93,6 +98,12 @@ public class ServerUseCase{
         writer.write("STAT get_misses "+counter.getGet_misses()+"\r\n");
 
         writer.write("END\r\n");
+        writer.flush();
+    }
+
+    private void flushAction(String[] commands) throws IOException{
+        repository.flushData();
+        writer.write("ACK\r\n");
         writer.flush();
     }
 

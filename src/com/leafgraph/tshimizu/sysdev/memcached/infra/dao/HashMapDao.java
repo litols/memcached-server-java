@@ -1,6 +1,8 @@
 package com.leafgraph.tshimizu.sysdev.memcached.infra.dao;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by takahiro on 2016/11/02.
@@ -62,6 +64,13 @@ public class HashMapDao extends Dao{
     public int countItems() {
         synchronized (HashMapDao.class) {
             return hashMap.size();
+        }
+    }
+
+    @Override
+    public Set<Map.Entry<String, String>> getSet() {
+        synchronized (HashMapDao.class) {
+            return hashMap.entrySet();
         }
     }
 }
