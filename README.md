@@ -29,7 +29,7 @@ initial release
 
 ## Credits
 
-Litols – [@litols0816](https://twitter.com/litols0816) – raylitols@gmail.com
+Litols – [@litols0816](https://twitter.com/litols0816) – raylitols[at]gmail.com
 
 ## License
  
