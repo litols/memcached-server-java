@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/sysdev-memcached-server.iml" filepath="$PROJECT_DIR$/sysdev-memcached-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/memcached-server-java.iml" filepath="$PROJECT_DIR$/memcached-server-java.iml" />
     </modules>
   </component>
 </project>

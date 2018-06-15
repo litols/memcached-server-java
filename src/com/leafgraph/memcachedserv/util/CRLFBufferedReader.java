@@ -23,7 +23,7 @@
  * questions.
  */
 
-package com.leafgraph.tshimizu.sysdev.memcached.util;
+package com.leafgraph.memcachedserv.util;
 
 
 import java.io.IOException;

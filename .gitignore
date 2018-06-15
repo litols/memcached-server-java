@@ -16,6 +16,7 @@
 # Gradle:
 .idea/gradle.xml
 .idea/libraries
+.gradle
 
 # Mongo Explorer plugin:
 .idea/mongoSettings.xml
@@ -39,3 +40,7 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+# data folder
+/data/
+!/data/empty

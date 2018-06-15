@@ -1,6 +1,6 @@
-package com.leafgraph.tshimizu.sysdev.memcached;
+package com.leafgraph.memcachedserv;
 
-import com.leafgraph.tshimizu.sysdev.memcached.presentation.MemcachedServer;
+import com.leafgraph.memcachedserv.presentation.MemcachedServer;
 
 public class Main {
 

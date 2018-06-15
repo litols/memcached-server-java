@@ -1,19 +1,15 @@
-package com.leafgraph.tshimizu.sysdev.memcached.infra.dao;
+package com.leafgraph.memcachedserv.infra.dao;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by takahiro on 2016/11/02.
  */
 public class HashMapDao extends Dao{
     private static HashMapDao hashMapDaoInstance =new HashMapDao();
-    private static HashMap<String,String>hashMap = new HashMap<>();
+    private static HashMap<String, String> hashMap = new HashMap<>();
 
-    private HashMapDao() {
-
-    }
+    private static HashMap<String, String> durtySet = new HashMap<>();
 
     public synchronized static HashMapDao getSingleton(){
         return hashMapDaoInstance;
@@ -21,8 +17,9 @@ public class HashMapDao extends Dao{
 
 
     @Override
-    public boolean create(String key,String value) {
+    public boolean write(String key, String value) {
         synchronized (HashMapDao.class){
+            durtySet.put(key, value);
             hashMap.put(key,value);
             return true;
         }
@@ -34,14 +31,6 @@ public class HashMapDao extends Dao{
             if(!hashMap.containsKey(key))
                 return null;
             return hashMap.get(key);
-        }
-    }
-
-    @Override
-    public boolean update(String key,String value) {
-        synchronized (HashMapDao.class){
-            hashMap.put(key,value);
-            return true;
         }
     }
 
@@ -68,9 +57,16 @@ public class HashMapDao extends Dao{
     }
 
     @Override
-    public Set<Map.Entry<String, String>> getSet() {
+    public Set<Map.Entry<String, String>> getDurtySet() {
         synchronized (HashMapDao.class) {
-            return hashMap.entrySet();
+            return durtySet.entrySet();
+        }
+    }
+
+    public void deleteDurtySet(String key, String value){
+        synchronized (HashMapDao.class) {
+            durtySet.clear();
+            return;
         }
     }
 }

@@ -1,8 +1,8 @@
-package com.leafgraph.tshimizu.sysdev.memcached.infra;
+package com.leafgraph.memcachedserv.infra;
 
-import com.leafgraph.tshimizu.sysdev.memcached.infra.dao.Dao;
-import com.leafgraph.tshimizu.sysdev.memcached.infra.dao.HashMapDao;
-import com.leafgraph.tshimizu.sysdev.memcached.util.CRLFBufferedReader;
+import com.leafgraph.memcachedserv.infra.dao.Dao;
+import com.leafgraph.memcachedserv.infra.dao.HashMapDao;
+import com.leafgraph.memcachedserv.util.CRLFBufferedReader;
 
 import java.io.*;
 import java.util.Map;
@@ -18,7 +18,7 @@ public class DataRepository {
     private Dao dao;
 
     private DataRepository(){
-        dao=HashMapDao.getSingleton();
+        dao= HashMapDao.getSingleton();
         restoreDataRepository();
     }
 
@@ -26,8 +26,8 @@ public class DataRepository {
         return dataRepositoryInstance;
     }
 
-    public boolean create(String key, String value) {
-        return dao.create(key, value);
+    public boolean write(String key, String value) {
+        return dao.write(key, value);
     }
 
     public String read(String key) {
@@ -42,9 +42,6 @@ public class DataRepository {
         return dao.containsKey(key);
     }
 
-    public boolean update(String key, String value) {
-        return dao.update(key, value);
-    }
 
     public int countItems(){
         return dao.countItems();
@@ -59,7 +56,7 @@ public class DataRepository {
                     CRLFBufferedReader reader = new CRLFBufferedReader(new FileReader(file));
                     String key=reader.readLine();
                     String value=reader.readLine();
-                    create(key,value);
+                    write(key,value);
                 }
             } catch (Throwable e) {
                 e.printStackTrace();
@@ -75,11 +72,15 @@ public class DataRepository {
      * @return
      */
     public boolean flushData(){
-        for(Map.Entry<String,String> entry:dao.getSet()){
+        for(Map.Entry<String,String> entry:dao.getDurtySet()){
             boolean ret=flushData(entry.getKey(), entry.getValue());
-            if(ret==false)
+            if(!ret) {
                 return false;
+            } else {
+                dao.deleteDurtySet(entry.getKey(), entry.getValue());
+            }
         }
+
         return true;
     }
 

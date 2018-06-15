@@ -1,9 +1,9 @@
-package com.leafgraph.tshimizu.sysdev.memcached.domain;
+package com.leafgraph.memcachedserv.domain;
 
-import com.leafgraph.tshimizu.sysdev.memcached.infra.DataRepository;
-import com.leafgraph.tshimizu.sysdev.memcached.infra.ProccessCounter;
-import com.leafgraph.tshimizu.sysdev.memcached.util.CRLFBufferedReader;
-import com.leafgraph.tshimizu.sysdev.memcached.util.ConnectionCloseByUserException;
+import com.leafgraph.memcachedserv.infra.DataRepository;
+import com.leafgraph.memcachedserv.infra.ProccessCounter;
+import com.leafgraph.memcachedserv.util.CRLFBufferedReader;
+import com.leafgraph.memcachedserv.util.ConnectionCloseByUserException;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -73,7 +73,7 @@ public class ServerUseCase{
 
     private void setAction(String[] commands) throws IOException{
         String sdata = reader.readLine();
-        repository.create(commands[1], sdata);
+        repository.write(commands[1], sdata);
         System.out.println("STORED :"+sdata);
         writer.write("STORED\r\n");
         writer.flush();

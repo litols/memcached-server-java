@@ -1,4 +1,4 @@
-package com.leafgraph.tshimizu.sysdev.memcached.util;
+package com.leafgraph.memcachedserv.util;
 
 /**
  * Created by takahiro on 2016/10/24.
